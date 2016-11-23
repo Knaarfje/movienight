@@ -1,0 +1,19 @@
+card {
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    background-size: cover;
+    border-radius: 5px;
+    position: absolute;
+    width: 60vh;
+    height: 90vh;
+    right: 0;
+    left: 0;
+    margin: auto;
+    display: block;
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition: transform 375ms ease-in;
+}
+
+cardstack .stack{
+    perspective: 1000px;
+}

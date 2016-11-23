@@ -1,0 +1,8 @@
+<div class="stack">
+    <card ng-repeat="c in $ctrl.cards" 
+            card="c"
+            index="$index"
+            count="$ctrl.cards.length"
+            ng-style="c.style"
+            ng-click="$ctrl.removeCard($index)"></card>
+</div>

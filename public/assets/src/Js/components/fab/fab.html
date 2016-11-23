@@ -1,0 +1,12 @@
+<div class="fab-content" id="fab-{{$ctrl.id}}" ng-class="{'expanded': $ctrl.expanded, 'collapsed': !$ctrl.expanded}" >
+    <a ng-click="$ctrl.expanded = false" class="fab-toggle-btn" ng-show="$ctrl.expanded">
+        <span>×</span>
+    </a>
+    <div class="fab-content-inner" ng-transclude></div>
+</div>
+
+<div class="fab" ng-class="{'expanded': $ctrl.expanded, 'collapsed': !$ctrl.expanded}">
+    <a ng-click="$ctrl.expanded = true;" class="fab-toggle-btn">
+        <span>+</span>
+    </a>
+</div>
