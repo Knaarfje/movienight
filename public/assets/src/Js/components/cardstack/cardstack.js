@@ -27,19 +27,22 @@ app.component('cardstack', {
         }
 
         ctrl.onPanEnd = (e, c) => {
-            var o = e.center.x - ctrl.start.x;            
+            var o = e.center.x - ctrl.start.x;
             e.element[0].classList.remove('swiping');
             console.log(e);
 
-            if (e.center.x > window.innerWidth * 0.75) {                               
-                ctrl.panCard(c, 100, true);                
+            // Vote yes            
+            if (e.center.x > window.innerWidth * 0.75) {
+                ctrl.panCard(c, 100, true);
                 $timeout(() => {
                     ctrl.removeCard(ctrl.cards.indexOf(c))
                 }, 275);
                 return false;
             }
-            if (e.center.x < window.innerWidth * 0.25) {                               
-                ctrl.panCard(c, -100, true);                
+
+            // Vote no
+            if (e.center.x < window.innerWidth * 0.25) {
+                ctrl.panCard(c, -100, true);
                 $timeout(() => {
                     ctrl.removeCard(ctrl.cards.indexOf(c))
                 }, 275);

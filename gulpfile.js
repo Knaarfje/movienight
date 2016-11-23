@@ -21,7 +21,8 @@ const vendorJs = [
     `${config.bower}/AngularHammer/angular.hammer.js`,
     `${config.node}/sortablejs/Sortable.js`,
     `${config.node}/sortablejs/ng-sortable.js`,
-    `${config.node}/angular-filter/dist/angular-filter.min.js`
+    `${config.node}/angular-filter/dist/angular-filter.min.js`,    
+    `${config.src}/Js/vendor/themoviedb.js`
 ];
 
 const baseJs = [
