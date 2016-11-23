@@ -15,6 +15,7 @@
     "bootstrap-sass": "^3.3.6",
     "angular-route": "^1.5.7",
     "angular-touch": "^1.5.8",
-    "font-awesome": "fontawesome#~4.7.0"
+    "font-awesome": "fontawesome#~4.7.0",
+    "AngularHammer": "ryanmullins-angular-hammer#~2.1.10"
   }
 }

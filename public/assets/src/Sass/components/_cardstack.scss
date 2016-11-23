@@ -3,17 +3,25 @@ card {
     background-size: cover;
     border-radius: 5px;
     position: absolute;
-    width: 60vh;
-    height: 90vh;
+    width: 60vmin;
+    height: 90vmin;
     right: 0;
     left: 0;
     margin: auto;
     display: block;
     transform-style: preserve-3d;
     will-change: transform;
-    transition: transform 375ms ease-in;
+    transition: transform 375ms ease-in,opacity 375ms ease-in;
+    &.swiping{
+        transition: none;
+    }
+    &.removed{
+    }
 }
 
 cardstack .stack{
     perspective: 1000px;
+    display: flex;
+    align-items: center;
+    height: 100vh;
 }

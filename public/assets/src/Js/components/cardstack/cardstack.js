@@ -2,7 +2,7 @@ app.component('cardstack', {
     bindings: {
         cards: '<'
     },
-    controller() {
+    controller($timeout) {
         var ctrl = this;
         ctrl.expanded = false;
 
@@ -14,6 +14,41 @@ app.component('cardstack', {
         ctrl.$postLink = () => {
             ctrl.styleCards();
         }
+
+        ctrl.onPanStart = (e, c) => {
+            e.element[0].classList.add('swiping');
+            ctrl.start = e.center;
+        }
+
+        ctrl.onPan = (e, c) => {
+            var offX = e.center.x - ctrl.start.x; 
+
+            ctrl.panCard(c,offX);
+        }
+
+        ctrl.onPanEnd = (e, c) => {
+            var o = e.center.x - ctrl.start.x;            
+            e.element[0].classList.remove('swiping');
+            console.log(e);
+
+            if (e.center.x > window.innerWidth * 0.75) {                               
+                ctrl.panCard(c, 100, true);                
+                $timeout(() => {
+                    ctrl.removeCard(ctrl.cards.indexOf(c))
+                }, 275);
+                return false;
+            }
+            if (e.center.x < window.innerWidth * 0.25) {                               
+                ctrl.panCard(c, -100, true);                
+                $timeout(() => {
+                    ctrl.removeCard(ctrl.cards.indexOf(c))
+                }, 275);
+                return false;
+            }
+
+            ctrl.panCard(c, c.translateX);
+        }
+
         ctrl.styleCards = () => {
             for (var c in ctrl.cards) {
                 var isTopcard = c == ctrl.cards.length - 1;
@@ -26,6 +61,15 @@ app.component('cardstack', {
                     transform: 'translate3d('+ ctrl.cards[c].translateX +'px, '+ ctrl.cards[c].translateY +'px,-' + ctrl.cards[c].translateZ + 'px) rotateZ(' + ctrl.cards[c].rotate + 'deg)',
                     backgroundImage: (c < ctrl.cards.length - 1 ? 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),' : '') + 'url(' + ctrl.cards[c].cover + ')'
                 }
+            }
+        }
+
+        ctrl.panCard = (c, x, vm) => {
+            var unit = vm ? 'vw' : 'px';
+            c.style = {                
+                transformOrigin: 'center bottom',
+                transform: 'translate3d(' + (x + '' + unit) + ', ' + c.translateY + 'px,-' + c.translateZ + 'px) rotateZ(' + x * .1 + 'deg)',
+                backgroundImage: 'url(' + c.cover + ')'
             }
         }
     },

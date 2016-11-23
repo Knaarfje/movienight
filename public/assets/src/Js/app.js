@@ -24,7 +24,7 @@ if ('serviceWorker' in navigator) {
 }
 
 
-const app = angular.module("movienightApp", ["firebase", 'ngTouch', 'ngRoute', "angular.filter"]);
+const app = angular.module("movienightApp", ["firebase", 'ngTouch', 'ngRoute', "angular.filter","hmTouchEvents"]);
 const templatePath = './assets/dist/Templates';
 
 app.config(function ($locationProvider, $routeProvider,$firebaseRefProvider) {
