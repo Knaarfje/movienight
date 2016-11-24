@@ -55,7 +55,25 @@ app.config(function ($locationProvider, $routeProvider,$firebaseRefProvider) {
             template: '<signin></signin>'
         }) 
         .when('/', {
+            resolve: {
+                "firebaseUser": function ($firebaseAuthService) {
+                    return $firebaseAuthService.$waitForSignIn();
+                } 
+            },
             template: `<app></app>`,
-        })        
+        }) 
+        .when('/vote', {
+            resolve: {
+                "firebaseUser": function ($firebaseAuthService) {
+                    return $firebaseAuthService.$waitForSignIn();
+                },
+                movies: function(MovieService) {
+                    return MovieService.get();   
+                }
+            },
+            template: `<app>
+        <cardstack cards="$resolve.movies"></cardstack>
+    <fab><add-form></add-form></fab></app>`,
+        }) 
         .otherwise('/'); 
 }); 

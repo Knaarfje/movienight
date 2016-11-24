@@ -53,17 +53,16 @@ $fab-size: 3em;
     }
     &.expanded {
         transform: scale(55);
-@include bp($screen-sm){
-transform: scale(25);
-}
-
+        @include bp($screen-sm,max) {
+            transform: scale(25.2);
+        }
         .fab-toggle-btn {
             opacity: 0;
         }
     }
     &.collapsed {
         transform: scale(1);
-        .fab-toggle-btn{
+        .fab-toggle-btn {
             transform: scale(1);
         }
     }

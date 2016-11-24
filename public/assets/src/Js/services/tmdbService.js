@@ -4,12 +4,20 @@ app.factory('TmdbService', function ($q, $http) {
 
     function search(q) {
         return $q(function (resolve, reject) {
-            var n = $http.get(`${baseUrl}/search/movie?api_key=${apikey}&query=${q}&include_adult=true`)
+            var n = $http.get(`${baseUrl}/search/movie?api_key=${apikey}&query=${q}&include_adult=true`);
+            resolve(n);
+        });
+    }
+
+    function details(id) {
+        return $q(function (resolve, reject) {
+            var n = $http.get(`${baseUrl}/movie/${id}?api_key=${apikey}`)
             resolve(n);
         });
     }
 
     return { 
-        search
+        search,
+        details
     };
 });

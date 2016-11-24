@@ -11,15 +11,18 @@ card {
     display: block;
     transform-style: preserve-3d;
     will-change: transform;
-    transition: transform 375ms ease-in,opacity 375ms ease-in;
-    &.swiping{
+    transition: transform 375ms ease-in, opacity 375ms ease-in;
+    @include bp($screen-sm,max) {
+        width: 70vmin;
+        height: 105vmin;
+    }
+    &.swiping {
         transition: none;
     }
-    &.removed{
-    }
+    &.removed {}
 }
 
-cardstack .stack{
+cardstack .stack {
     perspective: 1000px;
     display: flex;
     align-items: center;

@@ -1,10 +1,21 @@
-
 <form>
-    <h2>Add or <strong>die</strong></h2> 
-    <input type="search"/>
-    <ul>
-        <li ng-repeat="s in $ctrl.suggestions">
-            {{s.title}}
-        </li>
-    </ul>
+    <h2 class="alt">Add or <strong>die</strong></h2>
+    <div>
+        <input class="alt" type="text" ng-model="q" ng-keyup="$ctrl.find(q)" />
+    </div>
+    <div class="sugestion-list" ng-show="$ctrl.suggestions.length > 0">
+        <ul>
+            <li class="suggestion" ng-repeat="s in $ctrl.suggestions">
+                <div class="suggestion-image">
+                    <img ng-src="{{'https://image.tmdb.org/t/p/w92/' + s.poster_path}}"/>
+                </div>
+                <div class="suggestion-details">
+                    <h3>{{s.title}}</h3>
+                    <span>{{s.release_date | date : 'yyyy'}}</span><br/>
+                    <span class="label">Action</span>
+                </div>
+                <div class="suggestion-add"><a href="#" ng-click="$ctrl.add(s)">+</a></div>
+            </li>
+        </ul>
+    </div>
 </form>
