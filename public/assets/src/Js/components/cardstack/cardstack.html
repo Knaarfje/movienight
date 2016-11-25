@@ -1,8 +1,8 @@
 <div class="stack">
-    <card ng-repeat="c in $ctrl.cards" 
+    <card ng-repeat="c in $ctrl.filteredCards" 
             card="c"
             index="$index"
-            count="$ctrl.cards.length"
+            count="$ctrl.filteredCards.length"
             ng-style="c.style"
             hm-panstart="$ctrl.onPanStart($event, c)"
             hm-panmove="$ctrl.onPan($event, c)"

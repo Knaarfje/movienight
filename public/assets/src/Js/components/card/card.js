@@ -9,6 +9,7 @@ app.component('card', {
         ctrl.expanded = false;
 
         ctrl.$onInit = () => {
+            
             var isTopCard = ctrl.index == ctrl.count - 1;
 
             ctrl.card.translateZ = ((ctrl.count - ctrl.index) * 10)

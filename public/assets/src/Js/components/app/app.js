@@ -13,26 +13,7 @@ app.component('app', {
             $location.path('/signin');
         }
 
-        ctrl.movies = [{
-            title: 'Guardians of the Galaxy',
-            cover: 'https://image.tmdb.org/t/p/original/y31QB9kn3XSudA15tV7UWQ9XLuW.jpg'
-        },
-        {
-            title: 'Guardians of the Galaxy',
-            cover: 'https://image.tmdb.org/t/p/original/y31QB9kn3XSudA15tV7UWQ9XLuW.jpg'
-        },
-        {
-            title: 'Guardians of the Galaxy',
-            cover: 'https://image.tmdb.org/t/p/original/y31QB9kn3XSudA15tV7UWQ9XLuW.jpg'
-        },
-        {
-            title: 'Guardians of the Galaxy',
-            cover: 'https://image.tmdb.org/t/p/original/y31QB9kn3XSudA15tV7UWQ9XLuW.jpg'
-        },
-        {
-            title: 'Guardians of the Galaxy',
-            cover: 'https://image.tmdb.org/t/p/original/y31QB9kn3XSudA15tV7UWQ9XLuW.jpg'
-        }]
+        ctrl.movies = [];
     },
     templateUrl: `${templatePath}/app.html`   
 });  

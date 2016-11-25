@@ -54,7 +54,7 @@ $fab-size: 3em;
     &.expanded {
         transform: scale(55);
         @include bp($screen-sm,max) {
-            transform: scale(25.2);
+            transform: scale(23);
         }
         .fab-toggle-btn {
             opacity: 0;

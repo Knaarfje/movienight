@@ -24,7 +24,7 @@ if ('serviceWorker' in navigator) {
 }
 
 
-const app = angular.module("movienightApp", ["firebase", 'ngTouch', 'ngRoute', "angular.filter","hmTouchEvents", "tmdb"]);
+const app = angular.module("movienightApp", ["firebase", 'ngRoute', "angular.filter","hmTouchEvents"]);
 const templatePath = './assets/dist/Templates';
 
 app.config(function ($locationProvider, $routeProvider,$firebaseRefProvider) {
@@ -69,11 +69,22 @@ app.config(function ($locationProvider, $routeProvider,$firebaseRefProvider) {
                 },
                 movies: function(MovieService) {
                     return MovieService.get();   
+                },
+                votes: function(VoteService) {
+                    return VoteService.get();   
                 }
             },
-            template: `<app>
+            template: `<app votes="$resolve.votes">
         <cardstack cards="$resolve.movies"></cardstack>
     <fab><add-form></add-form></fab></app>`,
         }) 
         .otherwise('/'); 
 }); 
+
+Array.prototype.sum = function (prop) {
+    var total = 0
+    for ( var i = 0, _len = this.length; i < _len; i++ ) {
+        total += this[i][prop]
+    }
+    return total
+}

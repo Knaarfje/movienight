@@ -12,6 +12,18 @@ app.factory('MovieService', function ($q, $http, $firebaseArray, $firebaseObject
         });
     }
 
+    function vote(m, score, uid) {
+        var voteRef = firebase.database().ref().child("votes");
+        var votes = $firebaseArray(ref);
+        votes.$loaded().then((a) => {
+            a.$add({
+                user: uid,
+                movie: m.$id,
+                score: score
+            });
+        });
+    }
+
     function add(m) {
         return movies.$add(m);
     }
@@ -27,6 +39,7 @@ app.factory('MovieService', function ($q, $http, $firebaseArray, $firebaseObject
         add,
         get,
         remove,
-        save
+        save,
+        vote
     };
 });

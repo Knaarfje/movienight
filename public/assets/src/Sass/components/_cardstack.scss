@@ -12,7 +12,7 @@ card {
     transform-style: preserve-3d;
     will-change: transform;
     transition: transform 375ms ease-in, opacity 375ms ease-in;
-    @include bp($screen-sm,max) {
+    @include bp($screen-sm, max) {
         width: 70vmin;
         height: 105vmin;
     }
